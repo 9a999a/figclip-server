@@ -3,7 +3,7 @@
 set -e
 cd /srv/figclip/repo
 git pull -q
-Z=$(ls figclip-server*.zip | sort -V | tail -1)
+Z=$(ls | grep -E "^figclip-server[0-9]+\.zip$" | sort -V | tail -1)
 echo "Deploying $Z"
 rm -rf /tmp/upd && mkdir /tmp/upd
 unzip -q "$Z" -d /tmp/upd
